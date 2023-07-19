@@ -1,0 +1,106 @@
+<!-- emmet: 키워드로 html 구조 잡아주는 것 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag 종류</title>
+    <style>
+        body {
+            margin-bottom: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tag 종류에 대해 배워보자!</h1>
+    <h2>제목2</h2>
+    <h3>제목3</h3>
+    <h4>제목4</h4>
+    <h5>제목5</h5>
+    <h6>제목6</h6>
+    <p>여기는 본문태그입니다!</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>여기는 본문태그입니다!</p>
+
+    <h3>오늘의 할일</h3>
+    <!-- ul tag type attribute: disc(default), square, circle, none  -->
+    <ul type="square">
+        <li>html 공부하기</li>
+        <li>운동하기</li>
+        <li>방 청소하기</li>
+    </ul>
+
+    <h3>아이스 카페라떼 레시피</h3>
+    <!-- ol tag type attribute: 1(default), a, A, i, I -->
+    <!-- start attr: 시작 번호, reverse: 역순으로 -->
+    <ol type="1" start="4" reversed>
+        <li><strong>우유</strong>를 <em>180ml</em> 컵에 넣기</li>
+        <li><b>얼음</b>을 가득 넣기</li>
+        <li><i>에스프레소 샷</i>을 넣어주면</li>
+        <li><u>완성!</u> <del>맛있게 드세요!</del></li>
+    </ol>
+
+    <!-- 수평줄 태그 -->
+    <hr>
+
+    <!-- 목록 태그의 중첩 사용 -->
+    <h3>내가 좋아하는 음식</h3>
+    <ul>
+        <li>
+            양식
+            <ul>
+                <li>수제버거</li>
+                <li>파스타</li>
+            </ul>
+        </li>
+        <li>한식
+            <ul>
+                <li>된장찌개</li>
+                <li>청국장</li>
+            </ul>
+        </li>
+        <li>일식
+            <ul>
+                <li>초밥</li>
+                <li>우동</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h1>img & a tag</h1>
+    <!-- 상대경로/절대경로 -->
+    <!-- 
+        . : 현재
+        .. : 부모 
+        ./img/sesac.jpg : 현재 위치에서 img 폴더 안의 sesac.jpg 파일을 찾아라 -> 상대 경로
+        절대경로: root 부터 시작하는 경로
+    -->
+    <!-- 상대경로로 이미지 위치 찾기 >> 추천 (현재 위치로부터 이미지 파일을 찾아가므로!!) -->
+    <img src="./img/sesac.jpg" alt="새싹 팜플렛" width="500">
+    <!-- 절대경로로 이미지 위치 찾기 -->
+    <img src="C:\Users\sesac\Documents\sesac-ydp-5\02-html\img\sesac.jpg" alt="새싹 팜플렛" width="500">
+    <!-- 인터넷 주소로 이미지 설정 -->
+    <img src="data:image/png;base64,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" alt="apple logo">
+
+    <br>
+    <hr>
+    <!-- 
+        a tag target attribute: 링크가 열릴 위치 지정
+        - _self (default): 현재 탭에서 열기
+        - _blank : 새 탭으로 열기
+    -->
+    <a href="http://www.naver.com" >Naver로 이동하기 (default)</a>
+    <a href="http://www.naver.com" target="_blank">Naver로 이동하기 (_blank)</a>
+    <a href="http://www.google.com" target="_blank" 
+        title="마우스 커서를 올리면 나타남!">Google로 이동하기 (_blank)</a>
+
+    <!-- a 태그는 인터넷상의 주소 뿐만 아니라 폴더 내의 다른 html 문서로 이동도 가능 -->
+    <a href="./html-start.html">html-start 파일로 이동하기</a>
+</body>
+</html>
