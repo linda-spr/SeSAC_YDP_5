@@ -88,3 +88,76 @@ console.log(arr2.join('-'));
 console.log('hello'.split(''));
 console.log('hello'.split('').reverse());
 console.log('hello'.split('').reverse().join(''));
+
+///////////////////////////////////////////////////
+// 배열에서 반복문 사용하기!
+// - 기본 for 문
+// - for of 문
+// - forEach() 메서드
+
+const arr3 = [1, 2, 5, 6, 7];
+const alphabets = ['a', 'b', 'c', 'd'];
+
+for (let a = 0; a < arr3.length; a++) {
+  console.log(arr3[a]);
+}
+
+for (let alpha of alphabets) {
+  console.log(alpha);
+}
+
+alphabets.forEach(function (alpha) {
+  // alpha: currentValue를 의미. 반복하고 있는 현재 요소
+  console.log(alpha);
+});
+
+alphabets.forEach(function (alpha, idx) {
+  // alpha: currentValue를 의미. 반복하고 있는 현재 요소
+  // idx: currentValue의 인덱스(위치)
+  console.log(alpha, idx);
+});
+
+alphabets.forEach(function (alpha, idx, arr) {
+  // alpha: currentValue를 의미. 반복하고 있는 현재 요소
+  // idx: currentValue의 인덱스(위치)
+  // arr: forEach를 호출한 배열
+  console.log(alpha, idx, arr);
+});
+console.log('-------');
+
+// map, filter, find 메서드
+const arr4 = [1, 2, 3, 4, 5];
+
+// map(): 배열 내 모든 원소에 대해 연산한 결과를 모아 "새로운 배열" 반환
+// const mapResult = arr4.map(function (e) {
+//   return e * 2;
+// });
+const mapResult = arr4.map((e) => e * 2);
+console.log(mapResult);
+
+// filter(): 주어진 함수의 테스트(조건)를 통과하는 요소를 모아
+// (조건 통과하면 요소 유지, 미통과하면 요소 버림) "새로운 배열" 반환
+// const filterResult = arr4.filter(function (e) {
+//   return e > 2;
+// });
+const filterResult = arr4.filter((e) => e > 2);
+console.log(filterResult);
+
+// find(): 특정 조건을 만족하는 첫번째 요소(값) 반환
+const findResult = arr4.find((e) => e > 2);
+console.log(findResult);
+
+// 퀴즈
+const words = ['dog', 'cat', 'rabbit', 'apple', 'wow'];
+
+// 1. 글자 수가 3개 초과인 단어만 필터링 -> length 속성
+const result1 = words.filter((word) => word.length > 3);
+console.log(result1);
+
+// 2. 글자에 'a' 문자가 포함되어 있는 단어만 필터링 -> includes() 메소드
+// 'str'.includes(): true, false 반환 메서드
+const result2 = words.filter((word) => word.includes('a'));
+console.log(result2);
+
+const result3 = words.map((word) => word.includes('a'));
+console.log(result3);
