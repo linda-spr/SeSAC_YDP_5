@@ -45,6 +45,10 @@
   }
 }
 
+@media (min-width: 481px) and (max-width: 768px) {
+  /* 화면 너비가 481 ~ 768px */
+}
+
 @media screen and (orientation: landscape) {
   body {
     background-color: bisque;
