@@ -21,6 +21,28 @@ app.post('/ajax', (req, res) => {
   res.send(req.body);
 });
 
+app.get('/axios', (req, res) => {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+app.post('/axios', (req, res) => {
+  console.log(req.body);
+
+  // res.send(req.body);
+  res.send({ name: req.body.name, gender: req.body.gender, msg: '반가워!!' });
+});
+
+app.get('/fetch', (req, res) => {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+app.post('/fetch', (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+});
+
 app.listen(PORT, function () {
   console.log(`Port ${PORT} is opening!`);
 });
