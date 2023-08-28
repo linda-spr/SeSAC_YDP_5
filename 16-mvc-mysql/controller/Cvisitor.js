@@ -25,3 +25,13 @@ exports.postVisitor = (req, res) => {
     res.send({ id: insertId, name: name, comment: comment });
   });
 };
+
+exports.deleteVisitor = (req, res) => {
+  console.log(req.body); // { id: xx }
+  const { id } = req.body;
+
+  Visitor.deleteVisitor(id, (result) => {
+    console.log('controller >>', result); // true
+    res.send(result); // res.send(true)
+  });
+};

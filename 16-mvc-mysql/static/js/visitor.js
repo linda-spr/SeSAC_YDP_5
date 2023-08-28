@@ -27,9 +27,34 @@ function createVisitor() {
             <td>${name}</td>
             <td>${comment}</td>
             <td><button type="button">수정</button></td>
-            <td><button type="button">삭제</button></td>
+            <td><button type="button" onclick="deleteVisitor(this, ${id})>삭제</button></td>
         </tr>
     `;
     tbody.insertAdjacentHTML('beforeend', newVisitor); // / $('tbody').append(newVisitor);
+  });
+}
+
+function deleteVisitor(obj, id) {
+  console.log(obj, id);
+
+  // confirm 창에서 [취소] 누르면 아무일도 일어나지 않음
+  if (!confirm('정말로 삭제하나요?')) {
+    // !false => true
+    return;
+  }
+
+  // confirm 창에서 [확인] 누르면 visitor 데이터 삭제
+  // : axios로 DELETE /visitor 요청 날려서 db에 데이터 delete 하기
+  axios({
+    method: 'delete',
+    url: '/visitor',
+    data: {
+      id: id,
+    },
+  }).then((res) => {
+    console.log('delete /visitor 요청에 대한 응답', res.data);
+
+    alert('삭제성공!');
+    obj.parentElement.parentElement.remove();
   });
 }
