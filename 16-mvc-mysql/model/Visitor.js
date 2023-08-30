@@ -20,7 +20,7 @@ exports.getVisitors = (callback) => {
     if (err) {
       throw err;
     }
-    console.log('model >>', rows);
+    console.log('model >>', rows); // [ {}, {}, {}, ... ]
     callback(rows);
   });
 };
@@ -53,5 +53,29 @@ exports.deleteVisitor = (id, callback) => {
 
     console.log('model >> ', rows);
     callback(true); // { id: id }로 쓸 수도 있음
+  });
+};
+
+exports.getVisitor = (id, callback) => {
+  conn.query(`select * from visitor where id = ${id}`, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(rows); //  [ {} ]
+    callback(rows[0]);
+  });
+};
+
+exports.updateVisitor = (updateData, callback) => {
+  const { id, name, comment } = updateData;
+  const sql = `update visitor set name='${name}', comment='${comment}' where id=${id}`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(rows);
+    callback();
   });
 };
