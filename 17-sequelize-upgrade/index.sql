@@ -19,3 +19,4 @@ delete from Player where plyaer_id = 1;
 drop table Profile;
 drop table Player;
 drop table Team;
+
