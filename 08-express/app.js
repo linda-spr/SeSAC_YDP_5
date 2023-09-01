@@ -6,9 +6,9 @@ const PORT = 8080;
 // console.log(__dirname + '/static'); // C:\Users\sesac\Documents\sesac-ydp-5\08-express/stati
 
 app.set('view engine', 'ejs'); // express에서 사용할 템플릿 엔진 종류(ejs) 등록
+app.set('views', './views');
 // app.set('views', './views'); // 템플릿 엔진 파일을 저장할 위치 등록
 // static 미들웨어 등록
-app.use('/views', express.static(__dirname + '/views'));
 app.use('/public', express.static(__dirname + '/static'));
 
 // (임시) 데이터베이스에서 가져온 회원 정보(id, pw)
