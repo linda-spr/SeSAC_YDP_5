@@ -193,3 +193,13 @@ const result = numbers.reduce((accumulator, currentVAlue) => {
   return accumulator + currentVAlue;
 }, initialValue);
 console.log(result); // 115
+
+//////////////////////////
+// 여러 배열 합치는 방법
+// 1. concat()
+const arr_1 = [1, 2, 3];
+const arr_2 = [3, 4, 5];
+console.log(arr_1.concat(arr_2)); // [ 1, 2, 3, 3, 4, 5 ]
+
+// 2. ... spread
+console.log([...arr_1, ...arr_2]); // [ 1, 2, 3, 3, 4, 5 ]
