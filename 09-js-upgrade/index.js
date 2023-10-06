@@ -208,3 +208,40 @@ const apt1 = new Apartment(2022, '래미안', 3, 20, 'KCC');
 console.log(apt1);
 console.log(apt1.getAptInfo());
 console.log(apt1.getWindow());
+
+console.log('#################################');
+
+////////////////////////////////////////////////////////
+// 단축 평가
+// &&, ||
+
+// A && B : 두 개의 피연산자 모두 t면 t 반환
+// A || B : 두 개의 피연산자 중에서 하나만 t여도 t반환
+
+console.log(true && true); // true
+console.log(false && true); // false
+
+console.log(true || false); // true
+console.log(false || true); // true
+
+const xx = 5;
+const yy = 7;
+
+// 삼항연산자 예시
+const result1 = xx > yy ? 'xx가 큼' : 'yy가 큼';
+console.log(result1); // yy가 큼
+
+// 단축평가 (&&, 논리곱)
+const result2 = xx > yy && 'xx가 큼';
+console.log(result2); // false
+const result3 = xx < yy && 'yy가 큼';
+console.log(result3); // yy가 큼
+
+// 단축평가 (||, 논리합)
+const result4 = xx || 100;
+console.log(result4); // 5
+
+const nameEx = '홍길동';
+const nameEx2 = null;
+console.log(nameEx || '이름없음');
+console.log(nameEx2 || '이름없음');
