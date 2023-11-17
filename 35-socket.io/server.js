@@ -78,6 +78,29 @@ io.on('connection', (socket) => {
   // [실습4] 채팅창 메세지 전송 Step1
   // send 이벤트를 받아서
   // 모두에게 newMessage 이벤트로 {닉네임, 입력창내용} 데이터를 전송
+  socket.on('send', (data) => {
+    // { myNick: 'a', msg: 'dd', dm: ? }
+    // console.log('send 이벤트로 받은 data :: ', data);
+
+    // [실습5]
+    // 디엠인지 아닌지 구분해서
+    // io.to(소켓아이디).emit(event_name, data): 소켓아이디에 해당하는 클라이언트에게만 전송
+
+    if (data.dm === 'all') {
+      // "전체" 발송
+      io.emit('newMessage', { nick: data.myNick, msg: data.msg });
+    } else {
+      // "DM" 발송
+      let dmSocketId = data.dm;
+      const sendData = {
+        nick: data.myNick,
+        msg: data.msg,
+        dm: '(속닥속닥) ',
+      };
+      io.to(dmSocketId).emit('newMessage', sendData); // 디엠을 보내야하는 타켓 소켓아이디한테 메세지 전송
+      socket.emit('newMessage', sendData); // 자기자신한테 보여주는 메세지
+    }
+  });
 });
 
 server.listen(PORT, () => {

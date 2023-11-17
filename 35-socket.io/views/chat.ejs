@@ -38,6 +38,11 @@
         background-color: white;
       }
 
+      /* [실습5] DM 기능 추가 */
+      .secret-chat div {
+        background-color: pink;
+      }
+
       /* [실습3] 채팅창 입장 안내 문구 */
       .notice {
         text-align: center;
@@ -161,12 +166,56 @@
       // [실습4] 채팅창 메세지 전송 Step1
       function send() {
         // "send" 이벤트 전송 { 닉네임, 입력창내용 }
+        const data = {
+          // 전체: all, 그 외 다른 닉네임: socket.id
+          dm: document.querySelector('#nick-list').value,
+          myNick, // 내 닉네임
+          msg: document.querySelector('#message').value, // 메세지 내용
+        };
+
+        socket.emit('send', data);
+        document.querySelector('#message').value = ''; // 인풋 초기화
       }
 
       // [실습4] 채팅창 메세지 전송 Step2
       // newMessage 이벤트를 받아서 { 닉네임, 입력창내용 }
       // 내가 보낸 메세지; 오른쪽
       // 다른 사람이 보낸 메세지; 왼쪽
+      socket.on('newMessage', (data) => {
+        // console.log(data); // {nick: 'a', msg: 'cc'}
+
+        // 내가 생성해야할 채팅 구조
+        // <div class="my-chat">
+        //   <div>user1 : msg1</div>
+        // </div>
+        // <div class="other-chat">
+        //   <div>user2 : msg2</div>
+        // </div>
+
+        let chatList = document.querySelector('.chat-list');
+        let div = document.createElement('div'); // .my-chat or .other-chat
+        let divChat = document.createElement('div'); // 가장 안쪽 div
+
+        if (myNick === data.nick) {
+          // 내가 보낸 메세지
+          div.classList.add('my-chat');
+        } else {
+          // 다른 사람이 보낸 메세지
+          div.classList.add('other-chat');
+        }
+
+        if (data.dm) {
+          div.classList.add('secret-chat');
+          divChat.textContent = data.dm; // '(속닥속닥) '
+        }
+
+        divChat.textContent += `${data.nick} : ${data.msg}`;
+        div.append(divChat);
+        chatList.append(div);
+
+        // 메세지가 많아져서 스크롤이 생기더라도 하단 고정
+        chatList.scrollTop = chatList.scrollHeight;
+      });
     </script>
   </body>
 </html>
