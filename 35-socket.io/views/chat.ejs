@@ -157,6 +157,11 @@
         // TODO: nickObjs 반복 돌아서 option 태그 추가
         // option 태그의 value 속성 값은 socket.id, option 태그의 컨텐츠는 nick 값
         for (let key in nickObjs) {
+          // [추가실습1] 나에게 DM 시 메세지 2번 찍히는 이슈 (option 태그에서 본인 제외)
+          // if (key !== socket.id) {
+          //   options += `<option value="${key}">${nickObjs[key]}</option>`;
+          // }
+
           options += `<option value="${key}">${nickObjs[key]}</option>`;
         }
 
